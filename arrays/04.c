@@ -21,8 +21,14 @@ int main(void)
     int a1[] = {1, 2, 3};
     int a2[] = {2, 4, 5};
     int len = 2 * n;
-    int a3[len]; // Um array é um ponteiro! Sim, exatamente. Ele aponta para o primeiro elemento da lista, ou um elemento específico, se estizer indexado.
-
+    int a3[len];
+    /*
+    Um array é um ponteiro! Sim, exatamente. Ele aponta para o primeiro elemento da lista, ou um elemento específico, se estizer indexado.
+        - Equivalência fundamental: `arr[i]  ≡  *(arr + i)
+            - arr é um ponteiro para o primeiro elemento;
+            - i avança posições na memória;
+            - *(...) desrreferência esse endereço e retorna seu valor.
+    */
     init_array(a1, a2, len, a3); // Passando apenas o a3, sem & (operador `endereço de`) pois estaria retornando um ponteiro para ponteiro.
 
     sort_array(a3, len);
@@ -84,6 +90,7 @@ int get_menor(int idx_menor, int arr[], int len)
 void swap(int *idx_do_maior, int *idx_do_menor)
 {
     int buffer = *idx_do_maior;
+    // `*` operador de desreferência, ele não só retorna o valor que está dentro do endereço na memória, mas ainda permite altera-lo!
     *idx_do_maior = *idx_do_menor;
     *idx_do_menor = buffer;
 }
