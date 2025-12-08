@@ -24,7 +24,7 @@ int main(void)
     int a3[len];
     /*
     Um array é um ponteiro! Sim, exatamente. Ele aponta para o primeiro elemento da lista, ou um elemento específico, se estizer indexado.
-        - Equivalência fundamental: `arr[i]  ≡  *(arr + i)
+        - Equivalência fundamental: `arr[i]  ≡  *(arr + i)`
             - arr é um ponteiro para o primeiro elemento;
             - i avança posições na memória;
             - *(...) desrreferência esse endereço e retorna seu valor.
