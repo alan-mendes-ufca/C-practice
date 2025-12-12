@@ -37,13 +37,17 @@ char *get(char *output)
 void replace_in_place(char *sentence)
 {
     int len = strlen(sentence) - 1;
+
     char buffer;
 
     for (int i = 0, j = len; i < j; i++, j--)
     {
-        buffer = sentence[j];
-        sentence[j] = sentence[i];
-        sentence[i] = buffer;
+        char *begin = sentence + i;
+        char *end = sentence + j;
+
+        buffer = *end;
+        *end = *begin;
+        *begin = buffer;
     }
 }
 
