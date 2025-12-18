@@ -169,13 +169,13 @@ char unidadae = (sum%10) + '0';
 
 ---
 
-# Dúvida: Qual a diferença entre alocar um vetor ou matriz com `int* v = (int*)malloc(n * sizeof(int))` e `int *v = malloc(n*sizeof(int))`?
+## Dúvida: Qual a diferença entre alocar um vetor ou matriz com `int* v = (int*)malloc(n * sizeof(int))` e `int *v = malloc(n*sizeof(int))`?
 
 - Em C, o cast `(int*)` antes do `malloc` não é necessário, pois o `malloc` retorna um ponteiro do tipo `void*`, que é automaticamente convertido para qualquer outro tipo de ponteiro. Portanto, ambas as formas são corretas, mas a segunda forma (`int *v = malloc(n * sizeof(int))`) é preferida por ser mais limpa e evitar possíveis erros de conversão em C++.
 
 ---
 
-# Dúvida: Como liberar a memória alocada dinamicamente para vetores e matrizes?
+## Dúvida: Como liberar a memória alocada dinamicamente para vetores e matrizes?
 
 - Para vetores alocados com `malloc`, use `free(vetor);`.
 - Para matrizes alocadas como ponteiro para ponteiro (`int **m`), libere cada linha primeiro e depois o ponteiro para as linhas:

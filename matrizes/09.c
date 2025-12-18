@@ -71,6 +71,7 @@ bool is_magic(int n, int (*m)[n])
             // somando os valores de cada coluna
             sum_col[j] += m[i][j];
 
+            //
             if (i + j == n - 1)
             {
                 sum_diag_secondary += m[i][j];
