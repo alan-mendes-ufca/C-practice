@@ -149,6 +149,46 @@ char unidadae = (sum%10) + '0';
 
   - **Importante**: A forma contígua (arrays estáticos/VLAs) é mais eficiente para cache e performance!
 
+---
+
+## DÚVIDA: Qual a diferença entre `int **m` e `int (*m)[cols]` na passagem de matrizes para funções?
+
+- `int **m` ponteiro para array de ponteiros, onde cada ponteiro aponta para uma linha da matriz. Usado para matrizes alocadas **dinamicamente** onde cada linha pode estar em locais diferentes na memória.
+
+- `int (*m)[cols]` é um ponteiro para um array de colunas, usado para matrizes estáticas ou VLAs onde os dados são armazenados de forma **contínua** na memória.
+  - `*((*m) + col)` (ponteiro para array): acessa o elemento `col` na linha contínua apontada por `m`.
+  - `m[][col]` (array bidimensional com a primeira dimensão omitida) = `*((*m) + col)`, formas diferentes de criar matrizes, mas com a mesma aritmética, ou seja, iguais.
+
+---
+
+## Dúvida: Qual a diferênça entre VLA (Variable Length Array) e alocação dinâmica com malloc?
+
+- VLA são arrays cujo tamanho é determinado em tempo de execução, mas são alocados na stack (pilha) e têm escopo limitado à função onde são declarados. Eles são automaticamente desalocados quando a função retorna.
+- Alocação dinâmica com malloc aloca memória na heap (montão), que permanece alocada até que seja explicitamente liberada com free(), permitindo maior controle sobre o tempo de vida da memória.
+  - O tamanho também é determinado em tempo de execução.
+
+---
+
+# Dúvida: Qual a diferença entre alocar um vetor ou matriz com `int* v = (int*)malloc(n * sizeof(int))` e `int *v = malloc(n*sizeof(int))`?
+
+- Em C, o cast `(int*)` antes do `malloc` não é necessário, pois o `malloc` retorna um ponteiro do tipo `void*`, que é automaticamente convertido para qualquer outro tipo de ponteiro. Portanto, ambas as formas são corretas, mas a segunda forma (`int *v = malloc(n * sizeof(int))`) é preferida por ser mais limpa e evitar possíveis erros de conversão em C++.
+
+---
+
+# Dúvida: Como liberar a memória alocada dinamicamente para vetores e matrizes?
+
+- Para vetores alocados com `malloc`, use `free(vetor);`.
+- Para matrizes alocadas como ponteiro para ponteiro (`int **m`), libere cada linha primeiro e depois o ponteiro para as linhas:
+  ```c
+  for (int i = 0; i < rows; i++) {
+      free(m[i]);
+  }
+  // Finalmente, libere o ponteiro para os ponteiros
+  free(m);
+  ```
+
+---
+
 ## Novos comandos git aprendidos
 
 - `git ls-files` : retorna os arquivos que o git está rastreando.

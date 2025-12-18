@@ -56,6 +56,7 @@ char *normalization(char *sentence)
     int j = 0;
     for (int i = 0; i <= len; i++)
     {
+        // Para previvinir erro de inconsistências numa sequência utiliza-se um contator j que, diferente o i não salta quando o caractere é um espaço.
         if (!isspace(sentence[i]))
         {
             standardized[j] = tolower(sentence[i]);

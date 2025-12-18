@@ -42,6 +42,7 @@ void replace_in_place(char *sentence)
 
     for (int i = 0, j = len; i < j; i++, j--)
     {
+        // aritmética de ponteiros para definir o início e o fim da sentença
         char *begin = sentence + i;
         char *end = sentence + j;
 
