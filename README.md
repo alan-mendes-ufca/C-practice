@@ -188,7 +188,3 @@ char unidadae = (sum%10) + '0';
   ```
 
 ---
-
-## Novos comandos git aprendidos
-
-- `git ls-files` : retorna os arquivos que o git está rastreando.
